@@ -1,0 +1,314 @@
+@font-face {
+  font-family: apple;
+  src: url("rounded.ttf");
+}
+
+:root {
+  --blurple: #667bc6;
+  --title: rgb(236, 236, 236);
+  --subtitle: rgb(141, 141, 141);
+  --secondarybg: rgb(42 42 42);
+  --lightblue: #48cfcb;
+  --pink: #ff7777;
+  --green: #80af81;
+  --subfont14: 14px;
+  --subfont13: 13px;
+}
+
+html,
+body {
+  height: 100%; /* Ensure both html and body are 100% of the viewport height */
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  background-color: rgb(7, 7, 7);
+  color: var(--title);
+  font-family: "Poppins", sans-serif;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 0; /* Remove bottom padding if needed */
+  transition: margin-left 0.5s ease-in-out;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+main {
+  flex: 1; /* This allows the main content to take up available space */
+  transition: 0.5s ease-in-out;
+}
+
+h1 {
+  text-align: left;
+  font-weight: 500;
+  margin-left: 10px;
+  margin-top: 0px;
+  color: rgb(212, 212, 212);
+}
+h3 {
+  text-align: left;
+  font-weight: 300;
+  font-size: 13px;
+  margin-left: 10px;
+  margin-top: -25px;
+  color: var(--subtitle);
+  line-height: 14px;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.container01 {
+  background-color: rgb(28, 28, 28);
+  max-width: 650px;
+  max-height: fit-content;
+  margin: 15px auto;
+  border-radius: 30px;
+  padding: 18px 22px;
+}
+
+.imageCon {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.image {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align text to the start (left) */
+}
+
+.scroll-container {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in Chrome, Safari, Opera */
+}
+
+.c-text {
+  font-weight: 400;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-left: auto; /* Pushes the SVG to the end */
+  margin-right: -5px;
+  text-decoration: none;
+  color: currentColor;
+}
+
+.i-text {
+  margin-top: -1px;
+  margin-bottom: 0px;
+  font-weight: 300;
+  font-size: 12px;
+  color: var(--subtitle);
+  max-width: 150px;
+  text-align: left;
+}
+
+.container-text {
+  margin-top: 2px;
+  margin-bottom: 0px;
+  font-weight: 300;
+  font-size: var(--subfont14);
+  color: var(--subtitle);
+  text-align: left;
+}
+
+.i-text-name {
+  margin-top: 6px;
+  margin-bottom: 0px;
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--subtitle);
+  max-width: 135px; /* Limit the width to 150px */
+  white-space: nowrap; /* Prevent the text from wrapping to the next line */
+  overflow: hidden; /* Hide any text that exceeds the container */
+  text-overflow: ellipsis; /* Add ellipsis (...) for overflowed text */
+}
+
+.userimage {
+  height: 80px;
+  width: 140px;
+  margin-top: 10px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+}
+
+.arrow {
+  text-align: end;
+}
+
+footer p {
+  font-size: 12px;
+  text-align: center;
+  color: var(--subtitle);
+}
+
+footer {
+  margin-top: auto;
+  transition: 0.5s ease-in-out;
+}
+.scroll-container.active {
+  cursor: grabbing;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 10px;
+  transition: 0.5s ease-in-out;
+}
+
+.not-found {
+  text-align: left;
+  color: var(--subtitle);
+  font-size: smaller;
+}
+
+.notice-text {
+  text-align: left;
+  color: var(--subtitle);
+  font-size: smaller;
+  margin-top: 5px;
+}
+
+/* Default styles */
+.sidebar {
+  position: fixed;
+  top: 20px;
+  bottom: 0;
+  width: 145px; /* Default width for smaller screens */
+  height: 100%;
+  background-color: rgb(28, 28, 28);
+  color: rgb(226, 226, 226);
+  padding: 20px;
+  z-index: 1000;
+  transition: left 0.5s ease-in-out;
+  left: -250px; /* Hidden by default */
+  border-top-right-radius: 30px;
+}
+
+/* Media query for screens 736px and wider */
+@media only screen and (min-width: 736px) {
+  .sidebar {
+    width: 200px; /* Width for larger screens */
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  .menu-label {
+    display: none;
+  }
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column; /* Makes the items stack vertically */
+  height: calc(100vh - 50px);
+}
+
+.sidebar li {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.sidebar li svg {
+  margin-right: 10px;
+}
+
+.sidebar li span {
+  font-size: 14px;
+}
+
+.nav-item {
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.nav-item.active {
+  background-color: rgb(46, 46, 46);
+  border-radius: 50px;
+  padding-left: 20px;
+}
+
+.nav-item:not(.active) {
+  background-color: rgba(46, 46, 46, 0);
+  border-radius: 50px;
+  padding-left: 20px;
+  opacity: 0.6;
+  font-weight: 300;
+}
+
+.nav-item:not(.active):hover {
+  background-color: rgba(59, 59, 59, 0.267);
+  border-radius: 50px;
+  padding-left: 20px;
+  transition: 0.2s ease-in-out;
+}
+
+/* Show the sidebar and push content when the body has 'sidebar-active' */
+body.sidebar-active .sidebar {
+  left: 0; /* Show sidebar */
+}
+
+.nav-link {
+  text-decoration: none;
+  color: inherit; /* Inherit the color from the parent element */
+}
+
+body.sidebar-active main,
+body.sidebar-active footer {
+  margin-left: 185px;
+  filter: grayscale(1);
+  opacity: 0.8;
+}
+
+body.sidebar-active .navbar {
+  opacity: 0;
+}
+
+.shadow-blurple {
+  color: var(--blurple);
+  border: 2px solid currentColor;
+  box-shadow: currentColor 2px 4px 0px;
+}
+
+.shadow-green {
+  color: var(--green);
+  border: 2px solid currentColor;
+  box-shadow: currentColor 2px 4px 0px;
+}
+
+.shadow-pink {
+  color: var(--pink);
+  border: 2px solid currentColor;
+  box-shadow: currentColor 2px 4px 0px;
+}
+
+.shadow-lightblue {
+  color: var(--lightblue);
+  border: 2px solid currentColor;
+  box-shadow: currentColor 2px 4px 0px;
+}
+
+#stats-list {
+  padding: 0; /* Removes default padding */
+  margin: 0px 18px; /* Removes default margin */
+}

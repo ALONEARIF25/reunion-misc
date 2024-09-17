@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthdays | ReunionSurveys</title>
+    <script src="https://alonearif25.github.io/rs-jsFiles/member.js"></script>
+    <link rel="stylesheet" href="bday.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <h1>Birthdays</h1>
+
+        <div class="container01">
+            <p class="c-text">
+                Upcoming
+                <svg class="icon" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </p>
+
+            <div class="scroll-container">
+                <div class="imageCon">
+                    <div class="image">
+                        <img src="a.jpg" alt="Girl in a jacket" class="userimage">
+                        <p class="i-text-name">Haider Aroni</p>
+                        <p class="i-text">2 days later</p>
+                    </div>
+                </div>
+                <div class="imageCon">
+                    <div class="image">
+                        <img src="a.jpg" alt="Girl in a jacket" class="userimage">
+                        <p class="i-text-name">Haider Aroni</p>
+                        <p class="i-text">2 days later</p>
+                    </div>
+                </div>
+                <div class="imageCon">
+                    <div class="image">
+                        <img src="a.jpg" alt="Girl in a jacket" class="userimage">
+                        <p class="i-text-name">Haider Aroni</p>
+                        <p class="i-text">2 days later</p>
+                    </div>
+                </div>
+
+
+                <!-- Add more imageCon divs here -->
+            </div>
+
+        </div>
+
+
+        <div class="container01">
+            <p class="c-text">
+                Recent
+                <svg class="icon" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </p>
+
+            <div class="scroll-container">
+                <div class="imageCon">
+                    <div class="image">
+                        <img src="a.jpg" alt="Girl in a jacket" class="userimage">
+                        <p class="i-text-name">Haider Aroni</p>
+                        <p class="i-text">2 days ago</p>
+                    </div>
+                </div>
+                <div class="imageCon">
+                    <div class="image">
+                        <img src="a.jpg" alt="Girl in a jacket" class="userimage">
+                        <p class="i-text-name">Haider Aroni</p>
+                        <p class="i-text">2 days ago</p>
+                    </div>
+                </div>
+                <div class="imageCon">
+                    <div class="image">
+                        <img src="a.jpg" alt="Girl in a jacket" class="userimage">
+                        <p class="i-text-name">Haider Aroni</p>
+                        <p class="i-text">2 days ago</p>
+                    </div>
+                </div>
+
+
+                <!-- Add more imageCon divs here -->
+            </div>
+        </div>
+
+
+    </main>
+
+
+    <script>
+        const scrollContainer = document.querySelector('.scroll-container');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        // Prevent dragging of images within the scrollable container
+        const images = scrollContainer.querySelectorAll('img');
+        images.forEach(img => img.addEventListener('dragstart', (e) => e.preventDefault()));
+
+        scrollContainer.addEventListener('mousedown', (e) => {
+            isDown = true;
+            scrollContainer.classList.add('active');
+            startX = e.pageX - scrollContainer.offsetLeft;
+            scrollLeft = scrollContainer.scrollLeft;
+        });
+
+        scrollContainer.addEventListener('mouseleave', () => {
+            isDown = false;
+            scrollContainer.classList.remove('active');
+        });
+
+        scrollContainer.addEventListener('mouseup', () => {
+            isDown = false;
+            scrollContainer.classList.remove('active');
+        });
+
+        scrollContainer.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - scrollContainer.offsetLeft;
+            const walk = (x - startX) * 3; // Adjust scroll speed
+            scrollContainer.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+
+    <footer class="footer">
+        <p>Crafted by AloneArif 2024</p>
+    </footer>
+
+</body>
+
+</html>
