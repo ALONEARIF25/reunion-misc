@@ -61,7 +61,7 @@ const handleGesture = () => {
   const swipeDistance = touchEndX - touchStartX;
 
   // Swipe right to open the sidebar
-  if (swipeDistance > 50) {
+  if (swipeDistance > 200) {
     body.classList.add("sidebar-active");
     localStorage.setItem("sidebarState", "active");
   }
