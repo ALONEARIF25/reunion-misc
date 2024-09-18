@@ -45,10 +45,51 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 100); // Adjust this delay if necessary
 });
 
-// Toggle sidebar when pressing the spacebar
+// Toggle sidebar when pressing the spacebar or escape
 document.addEventListener("keydown", (e) => {
   if (e.code === "Space" || e.code === "Escape") {
     e.preventDefault(); // Prevent the default spacebar action (like page scroll)
     toggleSidebar();
+  }
+});
+
+// Handle swipe gestures for mobile devices
+let touchStartX = 0;
+let touchEndX = 0;
+
+const handleGesture = () => {
+  const swipeDistance = touchEndX - touchStartX;
+
+  // Swipe right to open the sidebar
+  if (swipeDistance > 50) {
+    body.classList.add("sidebar-active");
+    localStorage.setItem("sidebarState", "active");
+  }
+  // Swipe left to close the sidebar
+  if (swipeDistance < -50) {
+    body.classList.remove("sidebar-active");
+    localStorage.setItem("sidebarState", "inactive");
+  }
+};
+
+// Detect touchstart and touchend events
+document.addEventListener("touchstart", (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+document.addEventListener("touchend", (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleGesture();
+});
+
+// Ensure the sidebar closes when clicking on an empty area
+window.addEventListener("click", (e) => {
+  if (
+    body.classList.contains("sidebar-active") &&
+    !sidebar.contains(e.target) &&
+    !menuIcon.contains(e.target)
+  ) {
+    body.classList.remove("sidebar-active");
+    localStorage.setItem("sidebarState", "inactive");
   }
 });
