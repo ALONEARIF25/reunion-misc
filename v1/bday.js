@@ -13,7 +13,7 @@ const calculateDaysDifference = (birthday) => {
 
 // Function to generate imageCon HTML
 const generateImageCon = (member, daysDiff) => {
-  const imgSrc = member.image ? `https://survey.kormoit.com/images/pfp/${member.image}` : "../images/user.jpg";
+  const imgSrc = member.image ? `https://survey.kormoit.com/${member.image}` : "../images/user.jpg";
   const memberName = member.name;
   const timeLabel =
     daysDiff === 0
